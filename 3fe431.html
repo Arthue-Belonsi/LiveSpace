@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Screen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@100..900&family=Fira+Code:wght@300..700&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @import "tailwindcss";
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-tertiary: var(--tertiary);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-destructive: var(--destructive);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --font-family-sans: var(--font-sans);
+        --font-family-heading: var(--font-heading);
+        --font-family-mono: var(--font-mono);
+      }
+      :root {
+        --background: #050505;
+        --foreground: #f4f4f5;
+        --primary: #fe2c55;
+        --primary-foreground: #ffffff;
+        --secondary: #135dff;
+        --secondary-foreground: #ffffff;
+        --tertiary: #135dff;
+        --muted: #121216;
+        --muted-foreground: #a1a1aa;
+        --accent: #1c6cff;
+        --accent-foreground: #f4f4f5;
+        --card: #0d0d10;
+        --card-foreground: #f4f4f5;
+        --destructive: #ef4444;
+        --border: #25252b;
+        --input: #25252b;
+        --ring: #fe2c55;
+        --radius: 1rem;
+        --font-sans: Inter, sans-serif;
+        --font-heading: Inter, sans-serif;
+        --font-mono: JetBrains Mono, monospace;
+        --shadow-offset-x: 0;
+        --shadow-offset-y: 10;
+        --shadow-blur: 30;
+        --shadow-spread: -8;
+        --shadow-color: rgba(15, 23, 42, 0.12);
+        }
+    </style>
+    <style>
+      .brand-gradient { background-image: linear-gradient(135deg, var(--primary), var(--accent)); }
+      .shadow-theme {
+        box-shadow:
+          calc(var(--shadow-offset-x, 0) * 1px) calc(var(--shadow-offset-y, 10) * 1px)
+          calc(var(--shadow-blur, 30) * 1px) calc(var(--shadow-spread, -8) * 1px)
+          var(--shadow-color, rgba(15, 23, 42, 0.12));
+      }
+    </style>
+  </head>
+  <body>
+<div class="min-h-screen w-full bg-background flex flex-col relative">
+<header id="top" class="h-[942px] overflow-hidden bg-background text-primary-foreground">
+  <nav class="mx-auto flex max-w-[1200px] items-center justify-between px-8 py-6">
+    <a href="#top" class="flex items-center gap-2" aria-label="Live Space — início">
+      <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card p-1.5">
+        <img src="https://liveflow-landing.vercel.app/logo.png" alt="Live Space" class="h-full w-full object-contain" />
+      </span>
+      <span class="text-base font-heading font-semibold text-primary-foreground">Live <span class="text-primary">Space</span></span>
+    </a>
+    <a href="#pricing" class="inline-flex min-h-11 items-center rounded-lg border border-border bg-card px-4 text-xs font-semibold text-primary-foreground">Ver planos</a>
+  </nav>
+  <div class="mx-auto grid max-w-[1200px] grid-cols-[480px_424px] gap-8 pt-[45px]">
+    <div>
+      <span id="hk" class="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-[9px] font-medium uppercase tracking-[0.24em] text-muted-foreground">
+        <span class="size-1.5 rounded-full bg-primary"></span>
+        Motor de lives automáticas · TikTok Shop
+      </span>
+
+      <h1 id="ht" aria-label="Grava uma vez. Vende todo dia." class="mt-6 text-[66px] font-bold leading-[1.03] tracking-[-0.065em] text-primary-foreground">
+        <span class="block"><span>Grava</span></span>
+        <span class="block text-primary"><span>uma vez.</span></span>
+        <span class="block"><span>Vende sempre.</span></span>
+      </h1>
+
+      <p id="hs" class="mt-5 max-w-[450px] text-[15px] leading-6 text-muted-foreground">
+        Uma extensão de navegador que roda seu vídeo já gravado comolive contínuano TikTok Shop — fixando o produto, respondendo o chat e blindando a conta, sem ninguém na frente da câmera.
+      </p>
+
+      <div id="hc" class="mt-6 border-l-2 border-primary py-2 pl-3 text-[12px] text-primary-foreground">
+        Da instalação à primeira venda:menos de 10 minutos
+      </div>
+
+      <div id="hcta" class="mt-6 flex items-center gap-3">
+        <a href="#pricing" class="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-5 text-[12px] font-semibold text-primary-foreground shadow-md">
+          Começar agora
+          <iconify-icon icon="lucide:arrow-right" class="text-base"></iconify-icon>
+        </a>
+        <a href="#features" class="inline-flex h-11 items-center gap-2 rounded-lg bg-secondary px-5 text-[12px] font-semibold text-secondary-foreground shadow-md">
+          <iconify-icon icon="lucide:play" class="text-base"></iconify-icon>
+          Ver o console em ação
+        </a>
+      </div>
+
+      <div id="hm" class="mt-4 flex items-center gap-4 whitespace-nowrap text-[8px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+        <span class="flex items-center gap-1.5">
+          <iconify-icon icon="lucide:check" class="text-sm text-primary"></iconify-icon>
+          Ativação na hora
+        </span>
+        <span class="flex items-center gap-1.5">
+          <iconify-icon icon="lucide:check" class="text-sm text-primary"></iconify-icon>
+          Roda no seu navegador
+        </span>
+        <span class="flex items-center gap-1.5">
+          <iconify-icon icon="lucide:check" class="text-sm text-primary"></iconify-icon>
+          Suporte humano no WhatsApp
+        </span>
+      </div>
+    </div>
+
+    <div id="deck" role="img" aria-label="Console do Live Space monitorando uma live em tempo real" class="mt-[128px] h-[334px] overflow-hidden rounded-xl border border-border bg-card">
+      <div class="flex h-[27px] items-center gap-2 border-b border-border px-3 text-[8px] font-semibold tracking-[0.12em] text-muted-foreground">
+        <span class="text-primary">● LIVE 24/7</span>
+        <span class="h-3 border-l border-border"></span>
+        <span>ABA <span class="text-primary">tiktok</span></span>
+        <span class="h-3 border-l border-border"></span>
+        <span>TIMER <span class="text-primary">03:58:12</span></span>
+        <span class="h-3 border-l border-border"></span>
+        <span>SCAN <span class="text-primary">1.204</span></span>
+      </div>
+
+      <div class="grid h-[306px] grid-cols-[1fr_180px]">
+        <div id="deckLog" class="space-y-2 border-r border-border px-3 py-4 text-[9px] leading-4 text-muted-foreground">
+          <div class="ln grid grid-cols-[48px_1fr] gap-1">
+            <span>21:04:12</span><span class="ok text-primary">✓ ciclo automático ativo</span>
+          </div>
+          <div class="ln grid grid-cols-[48px_1fr] gap-1">
+            <span>21:04:15</span><span class="ok text-primary">✓ produto fixado · Kit Skincare</span>
+          </div>
+          <div class="ln grid grid-cols-[48px_1fr] gap-1">
+            <span>21:06:02</span><span class="sale text-primary">$ venda R$ 149,90 · telegram ✓</span>
+          </div>
+          <div class="ln grid grid-cols-[48px_1fr] gap-1">
+            <span>21:08:47</span><span class="warn text-muted-foreground">⚠ bloqueio · "achadinhos"</span>
+          </div>
+          <div class="ln grid grid-cols-[48px_1fr] gap-1">
+            <span>21:11:20</span><span class="sale text-primary">$ venda R$ 289,00 · telegram ✓</span>
+          </div>
+          <div class="ln grid grid-cols-[48px_1fr] gap-1">
+            <span>21:13:05</span><span class="ok text-primary">✓ IA respondeu 3 comentários</span>
+          </div>
+          <div class="ln grid grid-cols-[48px_1fr] gap-1">
+            <span>21:15:33</span><span class="err text-muted-foreground">⛔ violação detectada</span>
+          </div>
+          <div class="ln grid grid-cols-[48px_1fr] gap-1">
+            <span>21:15:34</span><span class="ok text-primary">✓ conta protegida · re-agendada</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 p-3">
+          <div class="kpi rounded-lg border border-border px-3 py-2.5">
+            <div class="text-[7px] uppercase tracking-[0.16em] text-muted-foreground">Espectadores</div>
+            <div class="cy mt-1 text-[18px] font-bold leading-none text-primary" data-count="892">892</div>
+          </div>
+          <div class="kpi rounded-lg border border-border px-3 py-2.5">
+            <div class="text-[7px] uppercase tracking-[0.16em] text-muted-foreground">Vendas na sessão</div>
+            <div class="cy mt-1 text-[18px] font-bold leading-none text-primary" data-count="27">27</div>
+          </div>
+          <div class="kpi rounded-lg border border-border px-3 py-2.5">
+            <div class="text-[7px] uppercase tracking-[0.16em] text-muted-foreground">GMV da live</div>
+            <div class="mt-1 text-[17px] font-bold leading-none text-primary-foreground" data-count="3410" data-prefix="R$ ">R$ 3.410</div>
+          </div>
+          <div class="kpi rounded-lg border border-border px-3 py-2.5">
+            <div class="text-[7px] uppercase tracking-[0.16em] text-muted-foreground">Horas no ar</div>
+            <div class="cy mt-1 text-[18px] font-bold leading-none text-primary">18h</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="h-20 overflow-hidden bg-background text-primary-foreground" aria-label="Notificações de lives em tempo real">
+  <div class="flex h-full items-center gap-4 whitespace-nowrap px-4 font-mono text-sm">
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:shopping-bag" class="text-xs"></iconify-icon></span>
+      <span>Nova venda· R$ 149,90<span class="ml-1 text-xs text-muted-foreground">agora</span></span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-6 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:send" class="text-sm"></iconify-icon></span>
+      <span>Alerta enviado noTelegram<span class="ml-1 text-xs text-muted-foreground">21:06</span></span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:check" class="text-xs"></iconify-icon></span>
+      <span class="font-semibold">Produto fixado<span class="font-normal">· Kit Skincare</span></span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-destructive"><iconify-icon icon="lucide:radio" class="text-xs"></iconify-icon></span>
+      <span class="font-semibold">Live iniciada<span class="font-normal">· piloto automático</span></span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:triangle-alert" class="text-xs"></iconify-icon></span>
+      <span class="font-semibold">Palavra bloqueada<span class="font-normal">· "achadinhos"</span></span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:shopping-bag" class="text-xs"></iconify-icon></span>
+      <span>Nova venda· R$ 289,00<span class="ml-1 text-xs text-muted-foreground">21:11</span></span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:pin" class="text-xs"></iconify-icon></span>
+      <span>IA respondeu· 3 comentários</span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-destructive"><iconify-icon icon="lucide:radio" class="text-xs"></iconify-icon></span>
+      <span>Anti-ban acionado· conta protegida</span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:shopping-bag" class="text-xs"></iconify-icon></span>
+      <span>+38 vendasna sessão · GMV R$ 4.820</span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-6 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:send" class="text-sm"></iconify-icon></span>
+      <span>Vendanotificada · R$ 199,90<span class="ml-1 text-xs text-muted-foreground">21:18</span></span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:shopping-bag" class="text-xs"></iconify-icon></span>
+      <span>Nova venda· R$ 149,90<span class="ml-1 text-xs text-muted-foreground">agora</span></span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-6 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:send" class="text-sm"></iconify-icon></span>
+      <span>Alerta enviado noTelegram<span class="ml-1 text-xs text-muted-foreground">21:06</span></span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:check" class="text-xs"></iconify-icon></span>
+      <span>Produto fixado· Kit Skincare</span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-destructive"><iconify-icon icon="lucide:radio" class="text-xs"></iconify-icon></span>
+      <span>Live iniciada· piloto automático</span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:triangle-alert" class="text-xs"></iconify-icon></span>
+      <span>Palavra bloqueada· "achadinhos"</span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:shopping-bag" class="text-xs"></iconify-icon></span>
+      <span>Nova venda· R$ 289,00<span class="ml-1 text-xs text-muted-foreground">21:11</span></span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:pin" class="text-xs"></iconify-icon></span>
+      <span>IA respondeu· 3 comentários</span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-destructive"><iconify-icon icon="lucide:radio" class="text-xs"></iconify-icon></span>
+      <span>Anti-ban acionado· conta protegida</span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-5 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:shopping-bag" class="text-xs"></iconify-icon></span>
+      <span>+38 vendasna sessão · GMV R$ 4.820</span>
+    </span>
+    <span class="flex h-10 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3">
+      <span class="flex size-6 items-center justify-center rounded-full bg-muted text-primary"><iconify-icon icon="lucide:send" class="text-sm"></iconify-icon></span>
+      <span>Vendanotificada · R$ 199,90<span class="ml-1 text-xs text-muted-foreground">21:18</span></span>
+    </span>
+  </div>
+</section>
+<section class="bg-background py-14 pb-16 text-primary-foreground">
+  <div class="mx-auto max-w-[1200px] px-8">
+    <div class="grid grid-cols-4">
+      <div class="flex h-28 flex-col justify-center border-r border-border pr-6">
+        <b class="text-4xl font-bold tracking-tight">740+</b>
+        <span class="mt-5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">operações no ar</span>
+      </div>
+      <div class="flex h-28 flex-col justify-center border-r border-border px-6">
+        <b class="text-4xl font-bold tracking-tight">6,8 mi</b>
+        <span class="mt-5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">comentários moderados</span>
+      </div>
+      <div class="flex h-28 flex-col justify-center border-r border-border px-6">
+        <b class="text-4xl font-bold tracking-tight">R$ 21 mi</b>
+        <span class="mt-5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">em GMV automatizado</span>
+      </div>
+      <div class="flex h-28 flex-col justify-center pl-6">
+        <b class="text-4xl font-bold tracking-tight">18h</b>
+        <span class="mt-5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">de live sem operador</span>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="bg-background text-primary-foreground py-24">
+  <div class="mx-auto max-w-[1200px] px-7">
+    <div class="grid grid-cols-3 overflow-hidden rounded-xl border border-border">
+      <figure class="flex h-[248px] flex-col border-r border-border px-7 py-7 last:border-r-0">
+        <div class="mb-4 flex gap-1 text-primary" aria-label="5 estrelas">
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+        </div>
+        <q class="block text-[15px] leading-6">Eu deixava a live rodando das 23h às 6h e ia dormir. Acordava com o Telegram cheio de venda. Mudou a operação da minha loja.</q>
+        <figcaption class="mt-auto flex items-center gap-3">
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-full border border-border bg-muted text-[10px] text-muted-foreground">BT</span>
+          <span class="text-xs leading-5 text-muted-foreground"><span class="block font-semibold tracking-[0.12em] text-primary-foreground">Bruno Tavares</span><span class="block">Loja de suplementos · Goiânia</span></span>
+        </figcaption>
+      </figure>
+      <figure class="flex h-[248px] flex-col border-r border-border px-7 py-7 last:border-r-0">
+        <div class="mb-4 flex gap-1 text-primary" aria-label="5 estrelas">
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+        </div>
+        <q class="block text-[15px] leading-6">O que mais me pegou foi o anti-ban. Já vi a live encerrar sozinha no aviso de violação e minha conta continuar limpa. Tranquilidade que não tinha antes.</q>
+        <figcaption class="mt-auto flex items-center gap-3">
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-full border border-border bg-muted text-[10px] text-muted-foreground">PN</span>
+          <span class="text-xs leading-5 text-muted-foreground"><span class="block font-semibold tracking-[0.12em] text-primary-foreground">Priscila Nunes</span><span class="block">Moda feminina · Recife</span></span>
+        </figcaption>
+      </figure>
+      <figure class="flex h-[248px] flex-col px-7 py-7">
+        <div class="mb-4 flex gap-1 text-primary" aria-label="5 estrelas">
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+          <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+        </div>
+        <q class="block text-[15px] leading-6">Cuido das lives de vários clientes ao mesmo tempo. Sem sentar na frente de cada conta, isso seria impossível. Hoje toco tudo de um lugar só.</q>
+        <figcaption class="mt-auto flex items-center gap-3">
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-full border border-border bg-muted text-[10px] text-muted-foreground">DF</span>
+          <span class="text-xs leading-5 text-muted-foreground"><span class="block font-semibold tracking-[0.12em] text-primary-foreground">Diego Fonseca</span><span class="block">Gestor de tráfego · Curitiba</span></span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<section class="h-[979px] border-t border-border bg-background px-7 text-primary-foreground">
+  <div class="mx-auto max-w-[1144px]">
+    <div class="pt-5">
+      <div class="flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.28em]">
+        <span class="text-muted-foreground">01</span>
+        <span class="text-primary">O que ele faz</span>
+      </div>
+
+      <div class="mt-14 max-w-[620px]">
+        <h2 class="text-5xl font-semibold leading-[0.95] tracking-[-0.055em]">
+          Um vídeo entra.<span class="block text-primary">Uma operação sai.</span>
+        </h2>
+        <p class="mt-4 max-w-[610px] text-base leading-7 text-muted-foreground">
+          Seis rotinas trabalhando juntas para manter sua live vendendo, limpa e no ar — sem você por perto.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 border-t border-border">
+      <div class="grid h-[109px] grid-cols-[74px_356px_1fr] border-b border-border pt-8">
+        <div class="text-xs text-muted-foreground">/01</div>
+        <div class="flex items-start gap-3 text-lg font-semibold leading-5 tracking-[-0.03em]">
+          <iconify-icon class="mt-0.5 text-primary" icon="lucide:pin" width="17"></iconify-icon>
+          <span>Vitrine que se ajusta sozinha</span>
+          <span class="rounded-full border border-primary/50 px-2 py-1 text-[8px] font-bold uppercase leading-none tracking-[0.14em] text-primary">Queridinho</span>
+        </div>
+        <p class="max-w-[550px] text-sm leading-6 text-muted-foreground">
+          O produto certo sobe, troca e reordena na live no ritmo do chat — sem ninguém mexendo no celular. A oferta aparece quando a audiência está no auge.
+        </p>
+      </div>
+
+      <div class="grid h-[109px] grid-cols-[74px_356px_1fr] border-b border-border pt-8">
+        <div class="text-xs text-muted-foreground">/02</div>
+        <div class="flex items-start gap-3 text-lg font-semibold leading-5 tracking-[-0.03em]">
+          <iconify-icon class="mt-0.5 text-primary" icon="lucide:refresh-cw" width="17"></iconify-icon>
+          <span>Vídeo em loop, live que não para</span>
+        </div>
+        <p class="max-w-[550px] text-sm leading-6 text-muted-foreground">
+          Seu vídeo gravado roda em ciclo contínuo e vira uma transmissão que fica de pé o dia inteiro, em quantas contas você precisar.
+        </p>
+      </div>
+
+      <div class="grid h-[109px] grid-cols-[74px_356px_1fr] border-b border-border pt-8">
+        <div class="text-xs text-muted-foreground">/03</div>
+        <div class="flex items-start gap-3 text-lg font-semibold leading-5 tracking-[-0.03em]">
+          <iconify-icon class="mt-0.5 text-primary" icon="lucide:shield-check" width="17"></iconify-icon>
+          <span>Escudo contra bloqueio</span>
+        </div>
+        <p class="max-w-[550px] text-sm leading-6 text-muted-foreground">
+          Ao primeiro sinal de aviso de violação, a live é encerrada em segundos. A regra é simples: sua conta importa mais do que a sessão.
+        </p>
+      </div>
+
+      <div class="grid h-[109px] grid-cols-[74px_356px_1fr] border-b border-border pt-8">
+        <div class="text-xs text-muted-foreground">/04</div>
+        <div class="flex items-start gap-3 text-lg font-semibold leading-5 tracking-[-0.03em]">
+          <iconify-icon class="mt-0.5 text-primary" icon="lucide:bot" width="17"></iconify-icon>
+          <span>Chat que conversa por você</span>
+        </div>
+        <p class="max-w-[550px] text-sm leading-6 text-muted-foreground">
+          Mensagens programadas mantêm o ritmo e uma voz de IA responde o público em tempo real, empurrando a decisão de compra.
+        </p>
+      </div>
+
+      <div class="grid h-[109px] grid-cols-[74px_356px_1fr] border-b border-border pt-8">
+        <div class="text-xs text-muted-foreground">/05</div>
+        <div class="flex items-start gap-3 text-lg font-semibold leading-5 tracking-[-0.03em]">
+          <iconify-icon class="mt-0.5 text-primary" icon="lucide:audio-waveform" width="17"></iconify-icon>
+          <span>Textura de presença ao vivo</span>
+        </div>
+        <p class="max-w-[550px] text-sm leading-6 text-muted-foreground">
+          Camadas discretas de som de ambiente, respiração e cliques dão à transmissão a naturalidade de alguém realmente na frente da câmera.
+        </p>
+      </div>
+
+      <div class="grid h-[109px] grid-cols-[74px_356px_1fr] border-b border-border pt-8">
+        <div class="text-xs text-muted-foreground">/06</div>
+        <div class="flex items-start gap-3 text-lg font-semibold leading-5 tracking-[-0.03em]">
+          <iconify-icon class="mt-0.5 text-primary" icon="lucide:lock-keyhole" width="17"></iconify-icon>
+          <span>Porteiro do chat</span>
+        </div>
+        <p class="max-w-[550px] text-sm leading-6 text-muted-foreground">
+          Concorrentes e termos combinados são barrados na entrada, mantendo o comentário limpo e focado em quem veio comprar.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="border-t border-border bg-background pt-16 text-primary-foreground">
+  <div class="mx-auto flex max-w-[1200px] items-center gap-6 px-8">
+    <span class="text-xs text-muted-foreground">02</span>
+    <span class="text-xs uppercase tracking-[0.28em] text-primary">Por dentro do console</span>
+  </div>
+</section>
+<section class="bg-background pb-24 text-primary-foreground">
+  <div class="mx-auto grid max-w-[1200px] grid-cols-1 gap-14 px-8 lg:grid-cols-2">
+  <div id="steps" class="flex max-w-sm flex-col">
+    <div class="border-t border-border py-8 first:border-t-0 first:pt-8">
+      <div class="mb-3 flex items-center gap-3 text-[10px] font-semibold tracking-[0.2em] text-primary">
+        <span class="h-px w-10 bg-primary"></span>
+        ETAPA 01
+      </div>
+      <h3 class="text-2xl font-semibold tracking-tight text-primary-foreground">Registro de cada movimento</h3>
+      <p class="mt-2 text-sm leading-6 text-muted-foreground">Início, produto fixado, comentário respondido, termo barrado, encerramento — cada passo aparece no console conforme acontece.</p>
+    </div>
+
+    <div class="border-t border-border py-8 opacity-30">
+      <div class="mb-3 flex items-center gap-3 text-[10px] font-semibold tracking-[0.2em] text-primary">
+        <span class="h-px w-5 bg-primary"></span>
+        ETAPA 02
+      </div>
+      <h3 class="text-2xl font-semibold tracking-tight text-primary-foreground">Oferta certa no momento certo</h3>
+      <p class="mt-2 text-sm leading-6 text-muted-foreground">Quando a audiência sobe, a vitrine troca sozinha e coloca na frente o item que está puxando o engajamento do chat.</p>
+    </div>
+
+    <div class="border-t border-border py-8 opacity-30">
+      <div class="mb-3 flex items-center gap-3 text-[10px] font-semibold tracking-[0.2em] text-primary">
+        <span class="h-px w-5 bg-primary"></span>
+        ETAPA 03
+      </div>
+      <h3 class="text-2xl font-semibold tracking-tight text-primary-foreground">Cada venda no seu bolso</h3>
+      <p class="mt-2 text-sm leading-6 text-muted-foreground">Toda compra dispara um aviso no seu celular na hora — você acompanha o faturamento da live de qualquer lugar.</p>
+    </div>
+
+    <div class="border-t border-border py-8 opacity-30">
+      <div class="mb-3 flex items-center gap-3 text-[10px] font-semibold tracking-[0.2em] text-primary">
+        <span class="h-px w-5 bg-primary"></span>
+        ETAPA 04
+      </div>
+      <h3 class="text-2xl font-semibold tracking-tight text-primary-foreground">Reação automática ao risco</h3>
+      <p class="mt-2 text-sm leading-6 text-muted-foreground">Deu aviso de violação, a live cai em segundos e reabre depois. Enquanto isso, a IA segue conversando e aquecendo a venda.</p>
+    </div>
+  </div>
+
+  <div class="pt-0">
+    <div class="h-[558px] overflow-hidden rounded-2xl border border-border bg-card">
+      <div class="flex h-9 items-center justify-between border-b border-border px-4 text-[10px] font-medium tracking-[0.16em] text-muted-foreground">
+        <span>CONSOLE · LOGS</span>
+        <span class="flex items-center gap-1.5 text-primary">
+          <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+          AO VIVO
+        </span>
+      </div>
+
+      <div class="p-6">
+        <div>
+          <div class="mb-5 text-[10px] tracking-[0.18em] text-muted-foreground">REGISTRO DO CICLO</div>
+          <div class="space-y-3 text-sm">
+            <div class="grid grid-cols-[42px_1fr] gap-2">
+              <span class="text-muted-foreground">21:04</span>
+              <span class="text-primary">✓ live iniciada</span>
+            </div>
+            <div class="grid grid-cols-[42px_1fr] gap-2">
+              <span class="text-muted-foreground">21:04</span>
+              <span class="text-primary">✓ produto fixado</span>
+            </div>
+            <div class="grid grid-cols-[42px_1fr] gap-2">
+              <span class="text-muted-foreground">21:06</span>
+              <span class="text-primary">$ venda R$ 149,90</span>
+            </div>
+            <div class="grid grid-cols-[42px_1fr] gap-2">
+              <span class="text-muted-foreground">21:08</span>
+              <span class="text-primary">⚠ palavra bloqueada</span>
+            </div>
+            <div class="grid grid-cols-[42px_1fr] gap-2">
+              <span class="text-muted-foreground">21:11</span>
+              <span class="text-primary">$ venda R$ 289,00</span>
+            </div>
+            <div class="grid grid-cols-[42px_1fr] gap-2">
+              <span class="text-muted-foreground">21:13</span>
+              <span class="text-primary">✓ IA respondeu chat</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden">
+          <div>Vitrine · troca automática</div>
+          <div><span><iconify-icon icon="lucide:package"></iconify-icon></span><span>Kit Skincare Premium<span>R$ 149,90</span></span><span>Fixado</span></div>
+          <div><span><iconify-icon icon="lucide:package"></iconify-icon></span><span>Tênis Runner X3<span>R$ 289,00</span></span></div>
+          <div><span><iconify-icon icon="lucide:package"></iconify-icon></span><span>Fone Bluetooth Pro<span>R$ 199,90</span></span></div>
+        </div>
+
+        <div class="hidden">
+          <div>Alertas no seu celular</div>
+          <div><iconify-icon icon="lucide:shopping-bag"></iconify-icon><span><b>Nova venda · R$ 289,00</b><br><span>Tênis Runner X3 · 21:11</span></span></div>
+          <div><iconify-icon icon="lucide:shopping-bag"></iconify-icon><span><b>Nova venda · R$ 149,90</b><br><span>Kit Skincare · 21:06</span></span></div>
+          <div><iconify-icon icon="lucide:chart-no-axes-combined"></iconify-icon><span><b>+38 vendas na sessão</b><br><span>GMV R$ 4.820</span></span></div>
+        </div>
+
+        <div class="hidden">
+          <div>Proteção anti-ban</div>
+          <div><iconify-icon icon="lucide:shield-alert"></iconify-icon><span><b>Violação detectada</b><br><span>21:15:33 · aviso do TikTok</span></span></div>
+          <div><iconify-icon icon="lucide:shield-check"></iconify-icon><span><b>Live encerrada em 1s</b><br><span>Conta protegida · re-agendada</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="h-[694px] bg-background py-24 text-primary-foreground">
+  <div class="mx-auto grid max-w-6xl grid-cols-2 gap-14">
+    <div>
+      <div class="border-t border-border pt-6">
+        <div class="flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.22em]">
+          <span class="text-muted-foreground">02·B</span>
+          <span class="text-destructive">O detalhe que mais converte</span>
+        </div>
+      </div>
+
+      <h2 class="mt-12 max-w-[550px] text-[52px] font-bold leading-[1.08] tracking-[-0.04em] text-primary-foreground">
+        Timing de oferta <span class="ml-2 text-primary">no automático</span>
+      </h2>
+
+      <p class="mt-4 max-w-[545px] text-[18px] leading-7 text-muted-foreground">
+        A diferença entre uma live parada e uma que vende costuma ser o momento em que o produto entra. Aqui isso vira regra, não sorte.
+      </p>
+
+      <ul class="mt-7 max-w-[548px]">
+        <li class="flex min-h-[53px] items-center gap-4 border-b border-border text-[15px] text-primary-foreground">
+          <iconify-icon class="shrink-0 text-lg text-primary" icon="lucide:check"></iconify-icon>
+          <span>Troca de item na vitrine sem toque humano</span>
+        </li>
+        <li class="flex min-h-[53px] items-center gap-4 border-b border-border text-[15px] text-primary-foreground">
+          <iconify-icon class="shrink-0 text-lg text-primary" icon="lucide:check"></iconify-icon>
+          <span>Ordem das ofertas guiada pelo movimento do chat</span>
+        </li>
+        <li class="flex min-h-[53px] items-center gap-4 border-b border-border text-[15px] text-primary-foreground">
+          <iconify-icon class="shrink-0 text-lg text-primary" icon="lucide:check"></iconify-icon>
+          <span>Encerrar a live na hora ou na programação, à distância</span>
+        </li>
+        <li class="flex min-h-[53px] items-center gap-4 border-b border-border text-[15px] text-primary-foreground">
+          <iconify-icon class="shrink-0 text-lg text-primary" icon="lucide:check"></iconify-icon>
+          <span>Relatório de cada sessão para repetir o que deu certo</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="pt-32">
+      <div class="overflow-hidden rounded-2xl border border-border bg-card">
+        <div class="flex h-9 items-center justify-between border-b border-border px-4 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+          <span>PICO DE AUDIÊNCIA · TROCA AUTO</span>
+          <span class="flex items-center gap-1 text-destructive">
+            <span class="h-1.5 w-1.5 rounded-full bg-destructive"></span>
+            AO VIVO
+          </span>
+        </div>
+
+        <div class="flex flex-col gap-3 p-5">
+          <div class="flex min-h-[76px] items-center gap-3 rounded-xl border border-border bg-muted/30 px-3">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-muted">
+              <iconify-icon class="text-lg text-muted-foreground" icon="lucide:circle"></iconify-icon>
+            </span>
+            <span class="text-[14px] font-semibold leading-5 text-primary-foreground">
+              Oferta anterior
+              <span class="mt-1 block text-[13px] font-normal text-muted-foreground">saiu da vitrine</span>
+            </span>
+          </div>
+
+          <div class="flex min-h-[76px] items-center gap-3 rounded-xl border border-primary/60 bg-muted/30 px-3">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-muted">
+              <iconify-icon class="text-lg text-primary-foreground" icon="lucide:check"></iconify-icon>
+            </span>
+            <span class="min-w-0 flex-1 text-[14px] font-semibold leading-5 text-primary-foreground">
+              Best-seller da noite
+              <span class="mt-1 block whitespace-nowrap text-[13px] font-normal text-muted-foreground">entrou no pico · +214% conversão</span>
+            </span>
+            <span class="flex shrink-0 items-center gap-1 rounded-full border border-primary/60 px-2 py-1 text-[9px] font-medium uppercase tracking-[0.1em] text-primary">
+              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+              Fixado
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="curso" class="bg-background text-primary-foreground py-24">
+  <div class="mx-auto max-w-[1200px] px-6">
+    <div class="border-t border-border pt-5">
+      <div class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em]">
+        <span class="font-mono text-muted-foreground">03</span>
+        <span class="text-muted-foreground">Vem junto, sem custo</span>
+      </div>
+
+      <h2 class="mt-9 max-w-[540px] text-5xl font-bold leading-[0.98] tracking-tight sm:text-6xl">
+        Do zero à<span class="ml-2 text-primary">primeira live no piloto</span>
+      </h2>
+
+      <p class="mt-5 max-w-[590px] text-base leading-6 text-muted-foreground">
+        Todo plano acompanha um treinamento direto ao ponto: você sai sabendo montar e rodar sua operação de live automática, mesmo começando do absoluto zero.
+      </p>
+
+      <div class="mt-11 grid overflow-hidden rounded-xl border border-border sm:grid-cols-2">
+        <div class="flex gap-6 border-b border-border p-6 sm:border-r">
+          <span class="font-mono text-2xl font-bold leading-none text-muted-foreground">01</span>
+          <div>
+            <h3 class="text-sm font-bold leading-5">O vídeo que segura audiência</h3>
+            <p class="mt-1 text-sm leading-5 text-muted-foreground">Como gravar ou escolher o material que prende quem chega e não cansa rodando em loop.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6 border-b border-border p-6">
+          <span class="font-mono text-2xl font-bold leading-none text-muted-foreground">02</span>
+          <div>
+            <h3 class="text-sm font-bold leading-5">Instalação e conta segura</h3>
+            <p class="mt-1 text-sm leading-5 text-muted-foreground">Deixar a extensão configurada, o login protegido e os ajustes que evitam bloqueio desde o primeiro dia.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6 border-b border-border p-6 sm:border-r">
+          <span class="font-mono text-2xl font-bold leading-none text-muted-foreground">03</span>
+          <div>
+            <h3 class="text-sm font-bold leading-5">Voz, chat e vitrine no ponto</h3>
+            <p class="mt-1 text-sm leading-5 text-muted-foreground">Ajustar a voz de IA, as respostas do chat e a ordem das ofertas para a live vender sem você.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6 border-b border-border p-6">
+          <span class="font-mono text-2xl font-bold leading-none text-muted-foreground">04</span>
+          <div>
+            <h3 class="text-sm font-bold leading-5">Rodando várias contas</h3>
+            <p class="mt-1 text-sm leading-5 text-muted-foreground">O método para multiplicar transmissões e tocar mais de uma operação ao mesmo tempo sem perder o controle.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6 p-6 sm:col-span-2">
+          <span class="text-2xl font-bold leading-none text-primary">+</span>
+          <div>
+            <h3 class="text-sm font-bold leading-5">Grupo fechado com encontros ao vivo</h3>
+            <p class="mt-1 text-sm leading-5 text-muted-foreground">Entrada vitalícia na comunidade, com chamadas recorrentes para tirar dúvidas e ver o que está funcionando no TikTok Shop agora.<span class="font-semibold text-primary">Acesso na hora da compra, incluído em qualquer plano.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="resultados" class="h-[750px] bg-background py-24 text-primary-foreground">
+  <div class="mx-auto max-w-[1200px]">
+    <div class="border-t border-border pt-5">
+      <div class="flex items-center gap-4 font-mono text-xs uppercase tracking-[0.2em]">
+        <span class="text-muted-foreground">04</span>
+        <span class="text-primary">Direto da comunidade</span>
+      </div>
+    </div>
+
+    <h2 class="mt-12 max-w-[560px] text-5xl font-semibold leading-[1.08] tracking-[-0.045em] md:text-[54px]">
+      O que chega<span class="block text-primary">no nosso grupo</span>
+    </h2>
+
+    <p class="mt-6 max-w-[620px] text-lg leading-relaxed text-muted-foreground">
+      Mensagens de quem já roda a operação — reações, dúvidas resolvidas e a primeira venda no automático.
+    </p>
+
+    <div class="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
+      <div class="border border-border bg-card p-5 text-card-foreground">
+        <div class="flex items-center gap-3 text-xs leading-4 text-muted-foreground">
+          <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-sm font-semibold text-muted-foreground">M</span>
+          <span>Membro · Grupo<br>hoje 23:58</span>
+        </div>
+        <div class="mt-5 border-l-2 border-primary pl-4 text-sm leading-6">
+          Deixei rodando e fui dormir. Acordei comnotificação de venda a noite todano Telegram. Surreal.
+        </div>
+      </div>
+
+      <div class="border border-border bg-card p-5 text-card-foreground">
+        <div class="flex items-center gap-3 text-xs leading-4 text-muted-foreground">
+          <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-sm font-semibold text-muted-foreground">M</span>
+          <span>Membro · Grupo<br>ontem 20:03</span>
+        </div>
+        <div class="mt-5 border-l-2 border-primary pl-4 text-sm leading-6">
+          Apareceu aviso de violação e a liveencerrou sozinha na hora. Minha conta segue intacta, sem susto.
+        </div>
+      </div>
+
+      <div class="border border-border bg-card p-5 text-card-foreground">
+        <div class="flex items-center gap-3 text-xs leading-4 text-muted-foreground">
+          <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-sm font-semibold text-muted-foreground">M</span>
+          <span>Membro · Grupo<br>seg 09:20</span>
+        </div>
+        <div class="mt-5 border-l-2 border-primary pl-4 text-sm leading-6">
+          Consegui deixarmais de uma conta transmitindo juntosem ficar sentado em cada uma. Isso mudou meu dia.
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-6 text-xs leading-relaxed text-muted-foreground">
+      Mensagens reais de membros da comunidade. Resultados variam conforme produto, dedicação e nicho.
+    </p>
+  </div>
+</section>
+<section class="h-[888px] overflow-hidden bg-background text-primary-foreground">
+  <div class="mx-auto max-w-[601px] pt-0">
+    <div class="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+      <span class="text-primary">05</span>
+      <span>Planos</span>
+    </div>
+
+    <h2 class="mt-5 text-4xl font-semibold leading-[1.02] tracking-tight sm:text-5xl">
+      Comece com uma.<span class="text-primary">Cresça sem trocar de ferramenta.</span>
+    </h2>
+
+    <p class="mt-5 max-w-[560px] text-base leading-relaxed text-muted-foreground">
+      O preço acompanha o tamanho da sua operação — de uma conta até quantas você aguentar rodar.
+    </p>
+  </div>
+
+  <div class="mt-16 flex gap-5 overflow-hidden px-6">
+    <article class="min-w-full rounded-xl border border-border bg-background p-7">
+      <span class="inline-flex rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">Mais escolhido</span>
+      <h3 class="mt-6 text-2xl font-semibold tracking-tight">Mensal · 1 conta</h3>
+      <p class="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">O suficiente para tirar sua primeira live do automático já vendendo.</p>
+      <div class="mt-7 text-3xl font-semibold tracking-tight">R$127,90/mês</div>
+      <div class="mt-2 text-xs text-muted-foreground">Cobrança mensal · 1 acesso</div>
+      <a href="https://pay.cakto.com.br/3cd7gfe_978359" target="_blank" class="mt-7 inline-flex w-full items-center justify-center rounded-md border border-border px-5 py-3 text-sm font-semibold transition-colors hover:bg-muted">Assinar plano</a>
+      <ul class="mt-7 space-y-3 border-t border-border pt-6 text-sm text-muted-foreground">
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>1 conta / acesso</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>Automação de Live completa</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>Proteção Anti-Ban</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>Curso completo de bônus</li>
+      </ul>
+    </article>
+
+    <article class="min-w-full rounded-xl border border-primary bg-background p-7">
+      <span class="inline-flex rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">Mais popular</span>
+      <h3 class="mt-6 text-2xl font-semibold tracking-tight">Mensal · 3 contas</h3>
+      <p class="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">Para quem já vende todo dia e quer folga para rodar mais frentes.</p>
+      <div class="mt-7 text-3xl font-semibold tracking-tight">R$219,90/mês</div>
+      <div class="mt-2 text-xs text-muted-foreground">Cobrança mensal · 3 acessos</div>
+      <a href="https://pay.cakto.com.br/ghm68nu" target="_blank" class="mt-7 inline-flex w-full items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">Assinar plano</a>
+      <ul class="mt-7 space-y-3 border-t border-border pt-6 text-sm text-muted-foreground">
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>3 contassimultâneas</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>Tudo do plano de 1 conta</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>Suporte prioritário</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon><span class="text-primary">Melhor custo por conta</span></li>
+      </ul>
+    </article>
+
+    <article class="min-w-full rounded-xl border border-border bg-background p-7">
+      <span class="inline-flex h-6"></span>
+      <h3 class="mt-6 text-2xl font-semibold tracking-tight">Mensal · 6 contas</h3>
+      <p class="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">Espaço de sobra para tocar várias lives em paralelo sem apertar.</p>
+      <div class="mt-7 text-3xl font-semibold tracking-tight">R$497,90/mês</div>
+      <div class="mt-2 text-xs text-muted-foreground">Cobrança mensal · 6 acessos</div>
+      <a href="https://pay.cakto.com.br/3bomiyh" target="_blank" class="mt-7 inline-flex w-full items-center justify-center rounded-md border border-border px-5 py-3 text-sm font-semibold transition-colors hover:bg-muted">Assinar plano</a>
+      <ul class="mt-7 space-y-3 border-t border-border pt-6 text-sm text-muted-foreground">
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>6 contassimultâneas</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>Tudo do plano de 3 contas</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>Central de Notificações completa</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>Vozes de IA exclusivas</li>
+      </ul>
+    </article>
+
+    <article class="min-w-full rounded-xl border border-border bg-background p-7">
+      <span class="inline-flex rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">Melhor valor</span>
+      <h3 class="mt-6 text-2xl font-semibold tracking-tight">Anual · ilimitado</h3>
+      <p class="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">Sem teto de contas e no melhor preço por live para quem vive disso.</p>
+      <div class="mt-7 text-3xl font-semibold tracking-tight">R$897,90/ano</div>
+      <div class="mt-2 text-xs text-muted-foreground">Pagamento único · acessos ilimitados</div>
+      <a href="https://pay.cakto.com.br/i9yhcjx" target="_blank" class="mt-7 inline-flex w-full items-center justify-center rounded-md border border-border px-5 py-3 text-sm font-semibold transition-colors hover:bg-muted">Assinar plano</a>
+      <ul class="mt-7 space-y-3 border-t border-border pt-6 text-sm text-muted-foreground">
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>Contas ILIMITADAS</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>Tudo dos planos mensais</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon>Pagamento único no ano</li>
+        <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-primary"></iconify-icon><span class="text-primary">Economia máxima vs. mensal</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+<section class="bg-background px-6 py-24 text-center text-primary-foreground">
+  <div class="mx-auto max-w-6xl">
+    <div class="text-xs font-semibold tracking-[0.18em] text-muted-foreground">// ENQUANTO VOCÊ LÊ ISSO</div>
+    <h2 class="mt-8 text-6xl font-bold leading-none tracking-tight text-muted-foreground md:text-7xl">
+      Tem gente vendendo<span class="block text-primary">enquanto dorme.</span>
+    </h2>
+    <p class="mt-6 text-lg text-muted-foreground">
+      Ligue sua primeira live no automático hoje — antes que o vizinho ligue a dele.
+    </p>
+    <div class="mt-8">
+      <a href="#pricing" class="inline-flex items-center gap-3 rounded-md bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+        Garantir meu acesso
+        <iconify-icon icon="lucide:arrow-right" class="text-lg"></iconify-icon>
+      </a>
+    </div>
+  </div>
+</section>
+<footer class="bg-background text-primary-foreground pt-16 pb-12">
+  <div class="mx-auto w-full max-w-6xl px-4">
+    <div class="flex items-center justify-between border-b border-border pb-7">
+      <span class="flex items-center gap-2">
+        <span class="flex h-[26px] w-[26px] items-center justify-center">
+          <img src="https://liveflow-landing.vercel.app/logo.png" alt="Live Space" width="26" height="26" />
+        </span>
+        <span class="text-sm font-semibold"><span>Live </span><span class="text-primary">Space</span></span>
+      </span>
+      <div class="flex items-center gap-2">
+        <a class="flex items-center gap-2 rounded-full border border-border px-3 py-2 font-mono text-xs text-muted-foreground" href="https://www.instagram.com/live_shop_ia" target="_blank" aria-label="Instagram @live_shop_ia">
+          <iconify-icon icon="lucide:instagram" class="text-sm"></iconify-icon>
+          @live_shop_ia
+        </a>
+        <a class="flex items-center gap-2 rounded-full border border-border px-3 py-2 font-mono text-xs text-muted-foreground" href="https://www.tiktok.com/@matheusdiniz703" target="_blank" aria-label="TikTok @matheusdiniz703">
+          <iconify-icon icon="lucide:music-2" class="text-sm"></iconify-icon>
+          @matheusdiniz703
+        </a>
+        <a class="flex items-center gap-2 rounded-full border border-border px-3 py-2 font-mono text-xs text-muted-foreground" href="https://wa.me/5564999889364" target="_blank" aria-label="WhatsApp (64) 99988-9364">
+          <iconify-icon icon="lucide:message-circle" class="text-sm"></iconify-icon>
+          (64) 99988-9364
+        </a>
+      </div>
+    </div>
+    <div class="flex items-center justify-between pt-7 font-mono text-xs leading-5 text-muted-foreground">
+      <p class="max-w-[520px]">O Live Space roda como extensão no seu próprio navegador — você mantém o controle da conta e do ciclo da live do início ao fim.</p>
+      <span>© 2026 Live Space</span>
+    </div>
+  </div>
+</footer>
+</div>
+</body></html>
